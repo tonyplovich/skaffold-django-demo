@@ -1,0 +1,19 @@
+apiVersion: skaffold/v2beta5
+kind: Config
+metadata:
+  name: django-quickstart
+build:
+  artifacts:
+    - image: tonyplovich/django-quickstart
+      context: .
+      sync:
+        infer:
+          - quickstart/**/*.py
+          - quickstart/**/*.html
+deploy:
+  helm:
+    releases:
+      - name: django-quickstart
+        chartPath: helm/
+        artifactOverrides:
+          skaffoldImage: tonyplovich/django-quickstart 
