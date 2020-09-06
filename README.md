@@ -7,20 +7,9 @@ You'll need:
 * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 * [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 * [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/)
-* Docker
-  * docker-cli (Usually packaged by distro)
-  * [docker-machine](https://docs.docker.com/machine/install-machine/)
-  * OR
-  * [local docker](https://www.docker.com/get-started)
 
 ## Usage
 * Clone this repo down to your workstation.
-* You should be able to use docker without privilege escalation.
-  * If using docker-machine
-```
-docker-machine create dm
-docker-machine start dm && eval $(docker-machine env dm)
-```
 * Start minikube
 ```
 minikube start
@@ -55,6 +44,6 @@ alias django_cmd='kubectl exec -it $(kubectl get -l app.kubernetes.io/instance=d
 django_cmd CMD.HERE!
 ```
 * **Tip:** it's helpful to have a terminal that can be split using something like [Terminator](https://terminator-gtk3.readthedocs.io/en/latest/)
-* **Tip:** If you're using vim you may see Skaffold reload everytime you open a file, this is due to the swap file (.swp) vim creates.  You can change where vim puts that file, or add it to the .dockerignore file.
+* **Tip:** If you're using vim you'll see Skaffold reload everytime you open a file, this is due to the swap file (.swp) vim creates.  You can change where vim puts that file, or add it to the .dockerignore file.
 * Skaffold removes the PVC on shutdown, which means Django's DB won't persist after Skaffold is shutdown
   * https://github.com/GoogleContainerTools/skaffold/issues/4366
